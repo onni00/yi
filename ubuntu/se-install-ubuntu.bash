@@ -35,7 +35,7 @@ mkdir -p /tmp/softether-autoinstall
 cd /tmp/softether-autoinstall
 
 # Perform apt update & install necessary software
-apt update && apt install wget &&
+apt update && apt install wget && apt install net-tools
 
 # Install build-essential and checkinstall
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' build-essential|grep "install ok installed")
