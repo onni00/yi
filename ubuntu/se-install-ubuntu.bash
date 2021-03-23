@@ -34,8 +34,8 @@ update-rc.d vpnserver remove > /dev/null 2>&1
 mkdir -p /tmp/softether-autoinstall
 cd /tmp/softether-autoinstall
 
-# Perform apt update
-apt update &&
+# Perform apt update & install necessary software
+apt update && apt install wget &&
 
 # Install build-essential and checkinstall
 PKG_OK=$(dpkg-query -W --showformat='${Status}\n' build-essential|grep "install ok installed")
@@ -59,10 +59,10 @@ if [ "" == "$PKG_OK" ]; then
   exit 1
 fi
 
-# Download SoftEther | Version 4.29 | Build 9680
-printf "\nDownloading release: ${RED}4.29 RTM${NC} | Build ${RED}9680${NC}\n\n"
-wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.29-9680-rtm/softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-x64-64bit.tar.gz
-tar -xzf softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-x64-64bit.tar.gz
+# Download SoftEther | Version 4.34 | Build 9745
+printf "\nDownloading release: ${RED}4.34 RTM${NC} | Build ${RED}9745${NC}\n\n"
+wget -O vpnserver.tar.gz https://www.softether-download.com/files/softether/v4.34-9745-rtm-2020.04.05-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-x64-64bit.tar.gz
+tar -xzf vpnserver.tar.gz
 cd vpnserver
 echo $'1\n1\n1' | make &&
 cd /tmp/softether-autoinstall && mv vpnserver/ /opt

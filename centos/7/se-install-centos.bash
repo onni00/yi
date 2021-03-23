@@ -21,10 +21,10 @@ rm /etc/init.d/vpnserver > /dev/null 2>&1
 printf "\n${RED}Development Tools${NC} are required. Installing those now.\n\n"
 yum update -y && yum groupinstall "Development Tools" -y && yum install kernel-devel -y
 
-# Download SoftEther | Version 4.27 | Build 9668
+# Download SoftEther | Version 4.34 | Build 9745
 printf "\nDownloading last stable release: ${RED}4.27${NC} | Build ${RED}9668${NC}\n\n"
-curl -o softether-vpn-4.27.tar.gz https://icoexist.io/mirror/softether/softether-vpnserver-v4.27-9668-beta-2018.05.29-linux-x64-64bit.tar.gz
-tar -xzf softether-vpn-4.27.tar.gz
+curl -o softether-vpn-4.34.tar.gz https://www.softether-download.com/files/softether/v4.34-9745-rtm-2020.04.05-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-x64-64bit.tar.gz
+tar -xzf softether-vpn-4.34.tar.gz
 cd vpnserver
 echo $'1\n1\n1' | make
 cd ~/se-vpn
